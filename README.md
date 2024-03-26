@@ -4,7 +4,7 @@
 
 Exploring food pricing trends in Rwanda, agriculture accounts for 30% of Rwanda's economy and over 60% of its export earnings.
 
-In this project we create forecasting functions to automate the projections of food prices.
+In this project, we create forecasting functions to automate the projections of food prices.
 
 Skills Showcased:
 
@@ -31,7 +31,7 @@ library(magrittr)
 library(forecast)
 ```
 
-First we load our initial dataset in, we can see there are many irrelevant data that provide no insights as well as columns that are not clearly labelled. So we will remove any irrelevant data and rename any unclear labels.
+First, we load our initial dataset in, we can see there are many irrelevant data that provide no insights as well as columns that are not clearly labelled. So we will remove any irrelevant data and rename any unclear labels.
 
 ![](images/updated_table.PNG)
 
@@ -39,7 +39,7 @@ The year and month are given as integers, before we can begin our analysis we ne
 
 ![](images/cleaned_table.PNG)
 
-In order to leverage this code to analysis more than just one dataset we are going to wrap our code so far into a function, that will allow for us to simply plug in a dataset without altering any code.
+In order to leverage this code to analyse more than just one dataset we are going to wrap our code so far into a function, that will allow us to simply plug in a dataset without altering any code.
 
 ``` r
 read_price_data <- function(commodity) {
@@ -74,7 +74,7 @@ read_price_data <- function(commodity) {
 }
 ```
 
-Next we want to create functions we can call upon to automatically graph the cleaned data from the above function. Firstly, we will create a function that will graph price trends over time.
+Next, we want to create functions we can call upon to automatically graph the cleaned data from the above function. Firstly, we will create a function that will graph price trends over time.
 
 ``` r
 plot_price_vs_time <- function(prices, commodity) {
@@ -89,9 +89,9 @@ plot_price_vs_time <- function(prices, commodity) {
 
 ![](images/pea_over_time.png)
 
-Now we will look to forecast food prices, the dataset contains multiple time series across multiple markets, as we seen before there are some very large spikes. So for our analysis we will opt to take the median price across these markets rather than the mean.
+Now we will look to forecast food prices, the dataset contains multiple time series across multiple markets, and as we have seen before there are some very large spikes. So for our analysis, we will opt to take the median price across these markets rather than the mean.
 
-Next, to carry out our forecasting in R we need to convert our data to a timeseries object. Once these are done we will transform the code into a function that can be called upon to use with any of our datasets.
+Next, to carry out our forecasting in R we need to convert our data to a time series object. Once these are done we will transform the code into a function that can be called upon to use with any of our datasets.
 
 ``` r
 create_price_time_series <- function(prices) {
@@ -109,7 +109,7 @@ create_price_time_series <- function(prices) {
 }
 ```
 
-Now we can create a function to forecast the future prices for our data, we can assess the accuracy of these forecasts by looking at our previous analysis. We seen that there was clear seasonality in food pricing, so we should expect to see this repeated in our forecasting.
+Now we can create a function to forecast the future prices for our data, we can assess the accuracy of these forecasts by looking at our previous analysis. We saw that there was clear seasonality in food pricing, so we should expect to see this repeated in our forecasting.
 
 ``` r
 plot_price_forecast <- function(time_series, commodity) {
@@ -122,7 +122,7 @@ plot_price_forecast <- function(time_series, commodity) {
 
 ![](images/pea_price.png)
 
-No we have our functions created we can quickly and easily carry out this forecasting on any of our datasets.
+Now we have our functions created we can quickly and easily carry out this forecasting on any of our datasets.
 
 ![](images/beans_over_time.png)
 
